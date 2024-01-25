@@ -1,5 +1,6 @@
 import math
 
+
 def binary_search(arr, target):
     left, right = 0, len(arr) - 1
     counter = 0

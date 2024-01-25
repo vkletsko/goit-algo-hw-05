@@ -29,20 +29,23 @@ results = {
     "rabin_karp_search": 0,
 }
 
+
 def detect_encoding(file_path):
     # Detects the encoding of a file using chardet
     with open(file_path, "rb") as file:
         result = chardet.detect(file.read())
     return result["encoding"]
 
+
 def read_file(file_path, encoding):
     with open(file_path, "r", encoding=encoding) as file:
         content = file.read()
     return content
 
+
 if __name__ == "__main__":
     try:
-        #File 1
+        # File 1
         enc = detect_encoding(path_text_1)
         test_txt_1 = read_file(path_text_1, enc)
 
@@ -52,7 +55,8 @@ if __name__ == "__main__":
             )
             results[key] = round(execution_time, 5)
 
-        fastest_algorithm_1, fastest_time_1 = min(results.items(), key=lambda x: x[1])
+        fastest_algorithm_1, fastest_time_1 = min(
+            results.items(), key=lambda x: x[1])
 
         benchmark_res_1 = "".join(
             f"\n| {key:<20}| {value:^9}|" for key, value in results.items()
@@ -60,7 +64,8 @@ if __name__ == "__main__":
 
         print("File 1 with existing substring", end="\n\n")
         print(output_format, benchmark_res_1, end="\n")
-        print("\nFastest: {} with duration time: {}\n".format(fastest_algorithm_1, fastest_time_1))
+        print("\nFastest: {} with duration time: {}\n".format(
+            fastest_algorithm_1, fastest_time_1))
 
         for key in results.keys():
             execution_time = timeit.timeit(
@@ -68,7 +73,8 @@ if __name__ == "__main__":
             )
             results[key] = round(execution_time, 5)
 
-        fastest_algorithm_1, fastest_time_1 = min(results.items(), key=lambda x: x[1])
+        fastest_algorithm_1, fastest_time_1 = min(
+            results.items(), key=lambda x: x[1])
 
         benchmark_res_1 = "".join(
             f"\n| {key:<20}| {value:^9}|" for key, value in results.items()
@@ -76,7 +82,8 @@ if __name__ == "__main__":
 
         print("File 1 with not existing substring", end="\n\n")
         print(output_format, benchmark_res_1, end="\n")
-        print("\nFastest: {} with duration time: {}\n".format(fastest_algorithm_1, fastest_time_1))
+        print("\nFastest: {} with duration time: {}\n".format(
+            fastest_algorithm_1, fastest_time_1))
 
         # File 2
         enc = detect_encoding(path_text_2)
@@ -88,7 +95,8 @@ if __name__ == "__main__":
             )
             results[key] = round(execution_time, 5)
 
-        fastest_algorithm_2, fastest_time_2 = min(results.items(), key=lambda x: x[1])
+        fastest_algorithm_2, fastest_time_2 = min(
+            results.items(), key=lambda x: x[1])
 
         benchmark_res_2 = "".join(
             f"\n| {key:<20}| {value:^9}|" for key, value in results.items()
@@ -96,7 +104,8 @@ if __name__ == "__main__":
 
         print("File 2 with existing substring", end="\n\n")
         print(output_format, benchmark_res_2, end="\n")
-        print("\nFastest: {} with duration time: {}\n".format(fastest_algorithm_2, fastest_time_2))
+        print("\nFastest: {} with duration time: {}\n".format(
+            fastest_algorithm_2, fastest_time_2))
 
         for key in results.keys():
             execution_time = timeit.timeit(
@@ -104,7 +113,8 @@ if __name__ == "__main__":
             )
             results[key] = round(execution_time, 5)
 
-        fastest_algorithm_2, fastest_time_2 = min(results.items(), key=lambda x: x[1])
+        fastest_algorithm_2, fastest_time_2 = min(
+            results.items(), key=lambda x: x[1])
 
         benchmark_res_2 = "".join(
             f"\n| {key:<20}| {value:^9}|" for key, value in results.items()
@@ -112,7 +122,8 @@ if __name__ == "__main__":
 
         print("File 2 with not existing substring", end="\n\n")
         print(output_format, benchmark_res_2, end="\n")
-        print("\nFastest: {} with duration time: {}\n".format(fastest_algorithm_2, fastest_time_2))
+        print("\nFastest: {} with duration time: {}\n".format(
+            fastest_algorithm_2, fastest_time_2))
 
     except FileNotFoundError as error:
         print("FileNotFoundError: {}".format(error))
